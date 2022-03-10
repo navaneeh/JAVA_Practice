@@ -3,10 +3,19 @@ import java.util.Collections;
 
 public class HelloWorld {
     public static void main(String[] args) {
-        int temp_value=10;
-        String Reverse= String.valueOf(temp_value);
-        Reverse=Character.toString(Reverse.charAt(1))+Character.toString(Reverse.charAt(0));
-        System.out.println(Reverse);
+
+        int B=8;
+        B--;
+        int arr_size=25;
+        for(int i=1;i<=100000;i++)
+        {
+            if(B<0)
+            {
+                System.out.println(100000-i-2);
+            }
+
+        }
+        System.out.println("done");
 
     }
 
