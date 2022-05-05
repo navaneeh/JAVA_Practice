@@ -10,27 +10,74 @@ public class ComparatorOperator {
 
     public static void main(String[] args) {
         ArrayList<Integer> A=new ArrayList<Integer>(Arrays.asList(30,3));//3,30,34,5,9
-        ArrayList<String> ans=new ArrayList<String>();
-        for(int j =0;j<A.size();j++)
-        {
-            ans.add(Integer.toString(A.get(j)));
-        }
+        ArrayList<Integer> B=new ArrayList<Integer>(Arrays.asList(3,30));//3,30,34,5,9
+        ArrayList<Integer> c=new ArrayList<Integer>(Arrays.asList(3,3,3));
+        ArrayList<ArrayList<Integer>> ans=new ArrayList<ArrayList<Integer>>();
+        ans.add(A);
+        ans.add(B);
+        ans.add(new ArrayList<Integer>(Arrays.asList(3,3,3)));
+        ans.add(new ArrayList<Integer>(Arrays.asList(3,3,3,6)));
 
-        Collections.sort(ans,new Comparator<String>(){
+        // sort listOfLists
+//        Collections.sort(listOfLists, (ArrayList <Integer> first, ArrayList<Integer> second) -> {
+//            if(first.get(0) < second.get(0)) return -1;
+//            else if(first.get(0) == second.get(1) && first.get(1) < second.get(1)) return -1;
+//            else return 1;
+//        });
 
-            public int compare(String o1, String o2) {
-                String order1=o1+o2;
-                String order2=o2+o1;
-                return order2.compareTo(order1);
+        Collections.sort(ans,new Comparator<ArrayList<Integer>>(){
+
+            public int compare(ArrayList<Integer> A, ArrayList<Integer> B) {
+               int a_size=A.size();
+               int b_size=B.size();
+               int min=Math.min(a_size,b_size);
+               int i=0;
+               while(i<min)
+               {
+                   if(A.get(i)<B.get(i))
+                   {
+                       return -1;
+                   }else if(A.get(i)>B.get(i))
+                   {
+                       return 1;
+                   }
+                   i++;
+               }
+               if(a_size==b_size)return 1;
+
+               if(a_size!=min) {
+                   return 1;
+               }
+                return -1;
             }
         });
 
-        String str="";
-        for(int i =0;i<ans.size();i++)
-        {
-            str+=ans.get(i);
-            System.out.println(ans.get(i));
+        for(int i=0;i<ans.size();i++)
+        {             System.out.println(ans.get(i).toString());
+
         }
+//        ArrayList<Integer> A=new ArrayList<Integer>(Arrays.asList(30,3));//3,30,34,5,9
+//        ArrayList<String> ans=new ArrayList<String>();
+//        for(int j =0;j<A.size();j++)
+//        {
+//            ans.add(Integer.toString(A.get(j)));
+//        }
+//
+//        Collections.sort(ans,new Comparator<String>(){
+//
+//            public int compare(String o1, String o2) {
+//                String order1=o1+o2;
+//                String order2=o2+o1;
+//                return order2.compareTo(order1);
+//            }
+//        });
+
+       // String str="";
+//        for(int i =0;i<ans.size();i++)
+//        {
+//            str+=ans.get(i);
+//            System.out.println(ans.get(i));
+//        }
 
 //        if(str.charAt(0)=='0')str="0";
 //        System.out.println(str);
