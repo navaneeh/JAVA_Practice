@@ -2,7 +2,11 @@ import java.util.*;
 
 public class HelloWorld {
     static public void main(String[] args) {
-        String str="23123";
-        System.out.println(str.substring(0, str.length()-1));
+     Random r=new Random();
+     int low=10;
+     int high=100;
+     int range=r.nextInt(high-low)+low;
+        System.out.println(range);
+
     }
 }
